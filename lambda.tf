@@ -9,6 +9,7 @@ resource "aws_s3_object" "lambda" {
   key    = "api.zip"
   source = data.archive_file.lambda.output_path
   etag   = filemd5(data.archive_file.lambda.output_path)
+  region = var.aws_region
 }
 
 resource "aws_lambda_function" "lambda" {
